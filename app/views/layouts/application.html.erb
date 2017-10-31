@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
+    <title>Projet V</title>
   <head>
-    <title>thp</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </head>
-
   <body>
-    <%= yield %>
+   <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Univers", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   root_path %></li>
+        <li><%= link_to "Log in", login_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+     
+    <div class="container">
+         <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
